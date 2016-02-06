@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="askBipul">
+<head>
+  <title>ask Bipul.</title>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="app.css" type='text/css' />
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="app.js"></script>
+ </head>
+
+<body ng-controller="AskBipulController">
+  <div class="question-region">
+    <span class="question-lead">{{questionLead}}</span>
+    <br />
+    <textarea class="question-body" ng-model="question"></textarea>
+    <br />
+    <div class="logo-container">
+      <button 
+        class="speak"
+        ng-click="askQuestion()"
+        ng-disabled="!question"
+        type="submit">
+        <img class="logo enabled" src="logo.svg">
+      </button>
+    </div>
+  </div>
+  <div 
+    class="answer-region"
+    ng-class="{'active': answerInProgress}"
+    ng-click="stopAnswer()">
+    <video
+      width="1280" 
+      height="720"
+      ng-if="answerInProgress"
+      autoplay>
+      <source src="35seconds.mp4" type="video/mp4">
+    </video>
+  </div>
+</body>
+</html>
